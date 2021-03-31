@@ -37,7 +37,7 @@ namespace FriendsAndFamilyAPI.Controllers
             try
             {
                 var faflist = _context.GetFriendsAndFamilybyResidentId(id);
-                _log4net.Info("GetFriendsAndFamilyByResidentId with resident Id " + id + " Was called");
+                _log4net.Info("GetFriendsAndFamilyByResidentId With Resident Id " + id + " Was Called !!");
                 if (faflist == null)
                 {
                     return NotFound();
@@ -53,7 +53,7 @@ namespace FriendsAndFamilyAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> PostFriendsAndFamily(FriendsAndFamily item)
         {
-            _log4net.Info("Post FriendsAndFamily Was called !!");
+            _log4net.Info("Post FriendsAndFamily Was Called !!");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

@@ -35,7 +35,7 @@ namespace FriendsAndFamilyAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "FaFAPI",
+                    Title = "Friends&Family API",
                     Version = "v1"
                 });
             });
