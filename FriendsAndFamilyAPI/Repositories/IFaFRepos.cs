@@ -1,4 +1,5 @@
 ﻿using FriendsAndFamilyAPI.Models;
+using FriendsAndFamilyAPI.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace FriendsAndFamilyAPI.Repositories
 {
     public interface IFaFRepos
     {
-        public IEnumerable<FriendsAndFamily> GetAllFriendsAndFamily();
+        IEnumerable<FafDetails> GetAllFriendsAndFamily();
         public IEnumerable<FriendsAndFamily> GetFriendsAndFamilybyResidentId(int id);
         public Task<FriendsAndFamily> PostFriendsAndFamily(FriendsAndFamily item);
 

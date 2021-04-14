@@ -1,4 +1,6 @@
 ﻿using FriendsAndFamilyAPI.Models;
+using FriendsAndFamilyAPI.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +22,27 @@ namespace FriendsAndFamilyAPI.Repositories
             _context = context;
         }
 
-        public IEnumerable<FriendsAndFamily> GetAllFriendsAndFamily()
+        public IEnumerable<FafDetails> GetAllFriendsAndFamily()
         {
-            return _context.FriendsAndFamily.ToList();
+
+            List<FriendsAndFamily> data = _context.FriendsAndFamily.Include(x => x.Resident).ToList();
+
+            List<FafDetails> fafDetailsList = new List<FafDetails>();
+            foreach (var ser in data)
+            {
+                FafDetails tempfafdetails = new FafDetails()
+                {
+                    FaFid = ser.FaFid,
+                    ResidentHouseNo = ser.Resident.ResidentHouseNo,
+                    ResidentName = ser.Resident.ResidentName,
+                    FaFname = ser.FaFname,
+                    ResidentId = ser.ResidentId,
+                    Relation = ser.Relation,
+                    ResidentMobileNo = ser.Resident.ResidentMobileNo
+                };
+                    fafDetailsList.Add(tempfafdetails);
+            }
+            return fafDetailsList;
         }
 
         public IEnumerable<FriendsAndFamily> GetFriendsAndFamilybyResidentId(int id)

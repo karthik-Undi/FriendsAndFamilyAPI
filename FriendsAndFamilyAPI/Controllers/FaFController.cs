@@ -1,4 +1,5 @@
 ﻿using FriendsAndFamilyAPI.Models;
+using FriendsAndFamilyAPI.Models.ViewModels;
 using FriendsAndFamilyAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace FriendsAndFamilyAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<FriendsAndFamily> GetAllFriendsAndFamily()
+        public IEnumerable<FafDetails> GetAllFriendsAndFamily()
         {
             _log4net.Info("Get All FriendsAndFamily Was Called !!");
             return _context.GetAllFriendsAndFamily();
